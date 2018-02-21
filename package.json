@@ -1,19 +1,19 @@
 {
-  "name": "typeorm-typescript-express-example",
+  "name": "typeorm-typescript-express-todomvc",
   "version": "0.0.1",
-  "description": "Example how to use Express and TypeORM with TypeScript.",
+  "description": "TypeORM and TypeScript based TodoMVC",
   "license": "MIT",
   "readmeFilename": "README.md",
   "author": {
-    "name": "Umed Khudoiberdiev",
-    "email": "pleerock.me@gmail.com"
+    "name": "ChangJoo Park",
+    "email": "pcjpcj2@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/typeorm/typescript-express-example.git"
+    "url": "https://github.com/changjoo-park/typescript-express-todomvc-example.git"
   },
   "bugs": {
-    "url": "https://github.com/typeorm/typescript-express-example/issues"
+    "url": "https://github.com/changjoo-park/typescript-express-todomvc-example/issues"
   },
   "tags": [
     "orm",
