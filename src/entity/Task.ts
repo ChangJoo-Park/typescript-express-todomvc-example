@@ -5,7 +5,8 @@ import {
   Column,
   UpdateDateColumn,
   CreateDateColumn,
-  BeforeInsert
+  BeforeInsert,
+  BeforeUpdate
 } from "typeorm"
 
 @Entity()
@@ -25,5 +26,10 @@ export class Task extends BaseEntity {
     this.createdAt = new Date()
     this.updatedAt = new Date()
     this.isCompleted = false
+  }
+
+  @BeforeUpdate()
+  updateDates() {
+    this.updatedAt = new Date()
   }
 }
