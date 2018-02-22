@@ -3,7 +3,8 @@ import { taskSaveAction } from './controller/TaskSaveAction'
 import { taskGetByIdAction } from './controller/TaskGetByIdAction'
 import { taskUpdateAction } from './controller/TaskUpdateAction'
 import { taskDeleteAction } from './controller/TaskDeleteAction'
-
+import { taskGetCompleted } from './controller/TaskGetCompleted'
+import { taskGetIncompleted } from './controller/TaskGetIncompleted'
 /**
  * All application routes.
  */
@@ -14,22 +15,32 @@ export const AppRoutes = [
     action: taskGetAllAction
   },
   {
+    path: '/tasks/completed',
+    method: 'get',
+    action: taskGetCompleted
+  },
+  {
+    path: '/tasks/incomplete',
+    method: 'get',
+    action: taskGetIncompleted
+  },
+  {
     path: '/tasks',
     method: 'post',
     action: taskSaveAction
   },
   {
-    path: '/tasks/:id',
+    path: '/task/:id',
     method: 'get',
     action: taskGetByIdAction
   },
   {
-    path: '/tasks/:id',
+    path: '/task/:id',
     method: 'patch',
     action: taskUpdateAction
   },
   {
-    path: '/tasks/:id',
+    path: '/task/:id',
     method: 'delete',
     action: taskDeleteAction
   }

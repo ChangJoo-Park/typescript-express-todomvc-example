@@ -32,4 +32,12 @@ export class Task extends BaseEntity {
   updateDates() {
     this.updatedAt = new Date()
   }
+
+  static findByCompleted () {
+    return this.find({ where: { isCompleted: true } })
+  }
+
+  static findByIncompleted () {
+    return this.find({ where: { isCompleted: false } })
+  }
 }

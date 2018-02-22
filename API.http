@@ -1,0 +1,35 @@
+@base = http://localhost:3000
+@sampleTaskId = a986f38f-15a8-490c-b4d2-70defd7b629d
+
+### FETCH ALL TASKS
+GET {{base}}/tasks HTTP/1.1
+
+### FETCH ALL COMPLETED TASKS
+GET {{base}}/completed HTTP/1.1
+
+### FETCH ALL INCOMPLETED TASKS
+GET {{base}}/tasks/incomplete HTTP/1.1
+
+### Create One Task
+POST {{base}}/tasks HTTP/1.1
+Content-Type: application/json
+
+{
+  "body": "Hello Worl"
+}
+
+### Fetch One Task
+GET {{base}}/task/{{sampleTaskId}} HTTP/1.1
+Content-Type: application/json
+
+### Update One Task
+PATCH {{base}}/task/{{sampleTaskId}}
+Content-Type: application/json
+
+{
+  "isCompleted": false,
+  "body": "Hello World 2"
+}
+
+### Delete One Task
+DELETE {{base}}/task/{{sampleTaskId}} HTTP/1.1

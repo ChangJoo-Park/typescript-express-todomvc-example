@@ -24,6 +24,7 @@
     "typeorm-express-example"
   ],
   "devDependencies": {
+    "nodemon": "^1.15.1",
     "typescript": "^2.5.3"
   },
   "dependencies": {
@@ -37,6 +38,8 @@
     "typeorm": "^0.1.0"
   },
   "scripts": {
-    "start": "tsc && node src/index.js"
+    "dev:transpile": "tsc --watch",
+    "dev:watch": "./node_modules/nodemon/bin/nodemon.js ./src/index.js",
+    "dev": "npm run dev:transpile | npm run dev:watch"
   }
 }
