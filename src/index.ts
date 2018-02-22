@@ -4,7 +4,7 @@ import { Request, Response } from "express";
 import * as express from "express";
 import * as bodyParser from "body-parser";
 import { AppRoutes } from "./routes";
-
+let startTime;
 // create connection with database
 // note that it's not active database connection
 // TypeORM creates connection pools and uses them for your requests
@@ -13,7 +13,10 @@ const initialize = async (): Promise<any> => {
   // create express app
   const app = express()
   app.use(bodyParser.json())
-
+  app.use((request: Request, response: Response, next: Function) => {
+    startTime = Date.now()
+    next()
+  })
   // register all application routes
   AppRoutes.forEach(route => {
     app[route.method](
@@ -27,6 +30,10 @@ const initialize = async (): Promise<any> => {
         }
       }
     )
+  })
+  app.use((request: Request, response: Response, next: Function) => {
+    console.log(`[${request.method}] ${request.url}  ${Date.now() - startTime}ms`)
+    next()
   })
 
   // run app
