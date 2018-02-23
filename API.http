@@ -33,3 +33,7 @@ Content-Type: application/json
 
 ### Delete One Task
 DELETE {{base}}/task/{{sampleTaskId}} HTTP/1.1
+
+### GET One Task's subtask
+GET {{base}}/task/{{sampleTaskId}}/subtasks HTTP/1.1
+Content-Type: application/json
