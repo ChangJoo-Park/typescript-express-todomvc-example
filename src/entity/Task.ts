@@ -6,7 +6,9 @@ import {
   UpdateDateColumn,
   CreateDateColumn,
   BeforeInsert,
-  BeforeUpdate
+  BeforeUpdate,
+  OneToMany,
+  BeforeRemove
 } from "typeorm"
 
 @Entity()
@@ -17,20 +19,29 @@ export class Task extends BaseEntity {
 
   @Column() body: string
 
+  @OneToMany(type => Task, task => task.subTasks, {
+    cascadeInsert: true,
+    cascadeUpdate: true
+  })
+  subTasks: Task[] = [];
+
   @CreateDateColumn() createdAt: Date
 
   @UpdateDateColumn() updatedAt: Date
 
   @BeforeInsert()
   createDates() {
-    this.createdAt = new Date()
-    this.updatedAt = new Date()
     this.isCompleted = false
   }
 
   @BeforeUpdate()
   updateDates() {
     this.updatedAt = new Date()
+  }
+
+  @BeforeRemove()
+  removeSubTasks () {
+    this.subTasks.forEach(t => t.remove())
   }
 
   static findByCompleted () {
