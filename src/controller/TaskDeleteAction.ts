@@ -5,10 +5,15 @@ import { Task } from "../entity/Task";
  * Delete one task
  */
 export async function taskDeleteAction(request: Request, response: Response) {
+  console.log('taskDeleteAction : ', request.params)
   const { id } = request.params
-  console.log('id => ', id)
   const task = await Task.findOneById(id)
-  console.log('task => ', task)
-  const result = await task.remove()
-  response.send(result);
+
+  try {
+    await task.remove()
+    console.log('remove succeed')
+  } catch (error) {
+    console.error(error)
+  }
+  response.send({ id });
 }

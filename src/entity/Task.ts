@@ -19,12 +19,6 @@ export class Task extends BaseEntity {
 
   @Column() body: string
 
-  @OneToMany(type => Task, task => task.subTasks, {
-    cascadeInsert: true,
-    cascadeUpdate: true
-  })
-  subTasks: Task[] = [];
-
   @CreateDateColumn() createdAt: Date
 
   @UpdateDateColumn() updatedAt: Date
@@ -37,11 +31,6 @@ export class Task extends BaseEntity {
   @BeforeUpdate()
   updateDates() {
     this.updatedAt = new Date()
-  }
-
-  @BeforeRemove()
-  removeSubTasks () {
-    this.subTasks.forEach(t => t.remove())
   }
 
   static findByCompleted () {
