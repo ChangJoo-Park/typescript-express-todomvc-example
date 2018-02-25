@@ -5,7 +5,6 @@ import { taskUpdateAction } from './controller/TaskUpdateAction'
 import { taskDeleteAction } from './controller/TaskDeleteAction'
 import { taskGetCompleted } from './controller/TaskGetCompleted'
 import { taskGetIncompleted } from './controller/TaskGetIncompleted'
-import { taskGetSubTasksAction } from './controller/TaskGetSubTasks'
 
 /**
  * All application routes.
@@ -45,11 +44,5 @@ export const AppRoutes = [
     path: '/task/:id',
     method: 'delete',
     action: taskDeleteAction
-  },
-  // Subtasks
-  {
-    path: '/task/:id/subtasks',
-    method: 'get',
-    action: taskGetSubTasksAction
   }
 ]
