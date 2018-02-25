@@ -2,6 +2,7 @@ import "reflect-metadata";
 import { createConnection, Connection } from "typeorm";
 import { Request, Response } from "express";
 import * as express from "express";
+import * as cors from "cors"
 import * as bodyParser from "body-parser";
 import { AppRoutes } from "./routes";
 let startTime;
@@ -12,6 +13,7 @@ const initialize = async (): Promise<any> => {
   const connection: Connection = await createConnection();
   // create express app
   const app = express()
+  app.use(cors())
   app.use(bodyParser.json())
   app.use((request: Request, response: Response, next: Function) => {
     startTime = Date.now()
